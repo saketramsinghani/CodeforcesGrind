@@ -1,0 +1,44 @@
+#include<iostream>
+#include<cmath>
+#include<algorithm>
+using namespace std;
+
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int n,x=0,l,ans=0,m,r,c,flag=-1;
+        cin>>n>>m>>r>>c;
+        char a[n][m];
+        for(int i=0 ; i<n ; i++){
+            for(int j=0 ; j<m ; j++){
+                cin>>a[i][j];
+                if(a[i][j]=='B')
+                flag=1;
+            }
+        }
+        
+        if(flag==-1)
+        cout<<-1<<endl;
+        else{
+            if(a[r-1][c-1]=='B')cout<<0<<endl;
+            else{
+                int temp=0;
+                for(int i=0 ; i<n ; i++){
+                    if(a[i][c-1]=='B')
+                    temp=1;
+                }
+                
+                for(int i=0 ; i<m ; i++){
+                    if(a[r-1][i]=='B')
+                    temp=1;
+                }
+                
+                if(temp==1)cout<<1<<endl;
+                else
+                cout<<2<<endl;
+            }
+        }
+        
+    }
+}
