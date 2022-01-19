@@ -1,0 +1,39 @@
+#include<iostream>
+#include<cmath>
+#include<algorithm>
+#include<vector>
+#include<string>
+using namespace std;
+
+
+
+
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int n,x=0,l,ans=0,m,r,c,flag=-1,temp,i;
+        string s;
+        cin>>s;
+        for(i=s.size()-1 ; i>=1 ; i--){
+            int a=s[i]-'0',b=s[i-1]-'0';
+            if((a+b)/10!=0){
+                flag=1;
+                temp=a+b;
+                break;
+            }
+        }
+        if(flag==1){
+            string s1=s.substr(0, i-1);
+            string s2=s.substr(i+1, s.size());
+            string s3=to_string(temp);
+            s=s1+s3+s2;
+        }else{
+            int a=s[0]-'0',b=s[1]-'0';
+            temp=a+b;
+            string s1=to_string(temp),s2=s.substr(2,s.size());
+            s=s1+s2;
+        }
+        cout<<s<<endl;
+    }
+}
