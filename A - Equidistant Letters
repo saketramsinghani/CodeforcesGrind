@@ -1,0 +1,45 @@
+#include<iostream>
+#include<cmath>
+#include<algorithm>
+#include<vector>
+#include<string>
+using namespace std;
+
+
+
+
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int n,x=0,l,ans=0,m,r,c,flag=-1,temp;
+       
+        string s;
+        cin>>s;
+        int a[26]={0};
+        for(int i=0 ; i<s.size() ; i++){
+            a[s[i]-'a']++;
+        }
+        
+        for(int i=0 ; i<26 ; i++){
+            if(a[i]==1){
+                char c='a'+i;
+                cout<<c;
+            }
+        }
+        for(int i=0 ; i<26 ; i++){
+            if(a[i]==2){
+                char c='a'+i;
+                cout<<c;
+            }
+        }
+        for(int i=0 ; i<26 ; i++){
+            if(a[i]==2){
+                char c='a'+i;
+                cout<<c;
+            }
+        }
+        cout<<endl;
+        
+    }
+}
