@@ -1,0 +1,99 @@
+#include<iostream>
+#include<vector>
+#include<map>
+// #include<list>
+// #include<set>
+#include<algorithm>
+// #include<queue>
+// #include<stack>
+// #include<cstring>
+#include<cmath>
+// #include<bitset>
+#include<string>
+#include <utility>
+// #include<unordered_set>
+// #include<unordered_map>
+// #include<cstdlib>
+// #include<iomanip>
+using namespace std;
+// #define f               first
+// #define s              second
+// #define int               long long
+// #define ll               long long int
+// #define pb               push_back
+// #define mp               make_pair
+// #define pii              pair<int,int>
+// #define vi               vector<int>
+// #define mii              unordered_map<int,int>
+// #define pqb              priority_queue<int>
+// #define pqs              priority_queue< int,vi,greater<int> >
+// #define setbits(x)       __builtin_popcountll(x)
+// #define zrobits(x)       __builtin_ctzll(x)
+// #define mod              1000000007
+// #define inf              1e10
+// #define ps(x,y)          fixed<<setprecision(y)<<x
+// #define mk(arr,n,type)   type *arr=new type[n];
+// #define w(x)             int x; cin>>x; while(x--)
+// #define me(i,start,end)  for(int i=start;i<end;i++)
+// #define he(i,end,start) for(int i=end-1;i>=start;i--)
+// #define all(v)         v.begin(),v.end()
+
+
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        long long int n,k,x,y,l,r,total,mini,j;
+        cin>>n;
+        vector<long long int> ans;
+        long long int a[n], b[n+1],c[n];
+        for(int i=0 ; i<n ; i++)
+        cin>>a[i];
+        for(int i=0 ; i<n+1 ; i++)
+        b[i]=0;
+        for(int i=0 ; i<n ; i++)
+        b[a[i]]++;
+        
+        for(int i=0 ; i<n+1 ; i++){
+            if(b[i]==0){
+                mini=i;
+                break;
+            }
+        }
+        
+        j=0;
+        c[0]=mini;
+        while(j<n-1){
+            b[a[j]]--;
+            if(b[a[j]]==0&&a[j]<mini){
+                mini=a[j];
+            }
+            c[j+1]=mini;
+            j++;
+        }
+        
+        j=0;
+        while(j<n){
+            l=c[j];
+            long long int d[l+1],cnt=0,i=j;
+            for(int z=0 ; z<l+1 ; z++)d[z]=0;
+            while(cnt!=l){
+                if(a[i]<l&&d[a[i]]==0){
+                    cnt++;
+                }
+                if(a[i]<l)
+                d[a[i]]++;
+                i++;
+            }
+            if(cnt==0)
+            i++;
+            ans.push_back(c[j]);
+            j=i;
+        }
+        
+        cout<<ans.size()<<endl;
+        for(int i=0 ; i<ans.size() ; i++)
+        cout<<ans[i]<<" ";
+        cout<<endl;
+    }
+}
